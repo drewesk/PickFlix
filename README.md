@@ -1,0 +1,1 @@
+For my Q1 project, I would like to make an app that allows you to search a tv show or movie and find out which episodes you can watch and where. Specifically, it would give you links to each streaming service/download options available with a tag telling you if the service is free, subscription, or pay to download. A summary and picture of the episode will also be included.
