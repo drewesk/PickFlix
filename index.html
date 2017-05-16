@@ -2,11 +2,50 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Where to Watch Me</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
   </head>
   <body>
-    <div>
-      Start
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">PickFlix</a>
+      </div>
+    </nav>
+    <!-- Movie/TV button selection-->
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <ul class="tabs toggle">
+            <li class="tab col s3 offset-s3" id= "show"><a class="active" href="#test1">TV Shows</a></li>
+            <li class="tab col s3" id= "movie"><a href="#test2">Movies</a></li>
+          </ul>
+        </div>
+      </div>
+    <!--Search Option-->
+      <div class="row">
+        <form class="col s12 offset-s2" id="mediasubmit">
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="What would you like to watch?" id="media" type="text">
+            </div>
+            <div class = "col s2">
+              <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="media-holder">
+
+      </div>
     </div>
+    <!--JQUERY and materialize links-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <script src="./app.js" charset="utf-8"></script>
+    <script src="./API.js" charset="utf-8"></script>
   </body>
 </html>
