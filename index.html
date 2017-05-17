@@ -12,7 +12,6 @@
     <nav>
       <div class="nav-wrapper">
         <a href="#" class="brand-logo center page-link" data-page="home" >PickFlix</a>
-        <a href="#" class="page-link right" data-page="movies">Movies TBD</a>
       </div>
     </nav>
     <section class="page home-page">
@@ -47,10 +46,11 @@
     </section>
     <section class="page movies-page">
       <div class="container">
-        <div class="single-movie-holder">
-          <div class="row title-holder"></div>
-          <div class="row img-source-holder">
-            <div class="col s12 m6 l8 card-holder-title">
+        <div class="single-media-holder movie">
+          <div class="row title-holder movie"></div>
+          <div class="row img-source-holder valign-wrapper movie">
+            <!--Card format for holding source icons-->
+            <div class="col s12 m12 l8 card-holder-title movie">
               <div class="card">
                 <div class="card-content">
                   <h5>Watch Now</p>
@@ -63,18 +63,46 @@
                   </ul>
                 </div>
                 <div class="card-content grey lighten-4">
-                  <div id="test4" class= "sources-container free-container">1</div>
-                  <div id="test5" class= "sources-container subscription-container">2</div>
-                  <div id="test6" class= "purchase-container">3</div>
+                  <div id="test4" class= "sources-container free-container movie"></div>
+                  <div id="test5" class= "sources-container subscription-container movie"></div>
+                  <div id="test6" class= "sources-container purchase-container movie"></div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row about-holder"></div>
+          <div class="row about-holder movie"></div>
         </div>
       </div>
     </section>
     <section class="page shows-page">
+      <div class="container">
+        <div class="single-media-holder show">
+          <div class="row title-holder show"></div>
+          <div class="row img-source-holder valign-wrapper show">
+            <!--Card format for holding source icons-->
+            <div class="col s12 m12 l8 card-holder-title show">
+              <div class="card">
+                <div class="card-content">
+                  <h5>Watch Now</p>
+                </div>
+                <div class="card-tabs">
+                  <ul class="tabs tabs-fixed-width">
+                    <li class="tab"><a href="#test7">Free Sources</a></li>
+                    <li class="tab"><a class="active" href="#test8">Subscription Sources</a></li>
+                    <li class="tab"><a href="#test9">Purchase Sources</a></li>
+                  </ul>
+                </div>
+                <div class="card-content grey lighten-4">
+                  <div id="test7" class= "sources-container free-container show"></div>
+                  <div id="test8" class= "sources-container subscription-container show"></div>
+                  <div id="test9" class= "sources-container purchase-container show"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row about-holder show"></div>
+        </div>
+      </div>
     </section>
     <!--JQUERY and materialize links-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
