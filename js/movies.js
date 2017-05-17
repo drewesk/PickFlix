@@ -1,8 +1,10 @@
 function movies() {
   $('.card-movie').remove()
+  //prepare get request;
   let movieID = currentMediaID;
   let query = 'movies/' + movieID + '?';
   let fullURL = createRequestURL(query);
+  //request movie data
   callAPIwithURL(fullURL).then(storeMovieData);
 }//end movies function
 
@@ -19,31 +21,45 @@ function storeMovieData(response) {
 }
 
 function addDatatoPage(movie) {
-    createPoster(movie);
+    addTitle(movie);
+    addPoster(movie);
     addDescription(movie);
-    addSources(movie);
+  //  addSources(movie);
+
 }
 
-function createPoster(movie){
+function addTitle(movie){
+  let title = movie.title;
+  let titleTemplate = `
+    <div class="col s12 m6 l4">
+      <h1>${title}</h1>
+    </div>
+    `;
+  $('.title-holder').append(titleTemplate);
+}
+
+function addPoster(movie){
   let imageURL = movie.imageURL;
-  console.log(imageURL);
   let imageTemplate = `
-    <div class='row'>
+    <div class="col s12 m6 l4">
       <img src="${imageURL}">
     </div>
     `;
-  $('.single-movie-holder').append(imageTemplate);
+  $('.card-holder-title').before(imageTemplate);
 }
 
 function addDescription(movie){
   let description = movie.overview;
   let pTemplate = `
     <div class='row'>
-      <p>${description}</p>
+      <div class="col s12">
+        <p>${description}</p>
+      </div>
     </div>
     `;
-  $('.single-movie-holder').append(description);
+  $('.about-holder').append(description);
 }
+
 
 function addSources(movie){
   let free = movie.free_web_sources;
@@ -56,32 +72,17 @@ function addSources(movie){
   $('.single-movie-holder').append(countainerTemplate);
 
   for (var i = 0; i < free.length; i++) {
-    generateIcon(free[i].display_name, free[i].link);
-    console.log(i);
+    findStreamingIcon(free[i].display_name, free[i].link, 'free');
   }
 
   for (var ii = 0; ii < subscription.length; ii++) {
-    generateIcon(subscription[ii].display_name, subscription[ii].link);
-    console.log(ii);
+    findStreamingIcon(subscription[ii].display_name, subscription[ii].link, 'subscription');
   }
 
   for (var iii = 0; iii < purchase.length; iii++) {
-    generateIcon(purchase[iii].display_name, purchase[iii].link);
-    console.log(iii);
+    findStreamingIcon(purchase[iii].display_name, purchase[iii].link, 'purchase');
   }
 }
-
-function generateIcon(source, link){
-  let iconTemplate = `
-  <div class="col s1">
-  <a href="${link}" class="source-link">
-    <img src="./images/placeholder.jpeg" alt="source" style="width:42px;height:42px;border:0;">
-  </a>
-  </div>
-  `;
-  $('.icon-holder').append(iconTemplate);
-}
-
 
 
 registerPage('movies', movies);
