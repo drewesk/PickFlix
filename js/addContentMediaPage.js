@@ -45,7 +45,6 @@ function addDescription(media){
       cast_list += cast[i].name + ', ';
     } cast_list += cast[cast.length-2].name;
   }
-  console.log(cast_list);
   if(media.media=='show') {
     extra_class = 'Network';
   } else {
@@ -127,7 +126,7 @@ function generateIcon(imgURL, link, sourcetype){
   console.log('made to generate icon');
   let iconTemplate = `
   <div>
-    <a href="${link}" class="source-link">
+    <a href="${link}" target="_blank" class="source-link">
       <img src="${imgURL}" alt="source" style="width:60px;height:42px;border:0;">
     </a>
   </div>

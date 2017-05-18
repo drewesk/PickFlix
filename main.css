@@ -26,5 +26,43 @@
 }
 
 .submitbutton{
-  width: 25%
+  width: 40%;
+  font-size: 1vw;
+}
+
+
+@media only screen and (max-width: 992px) {
+  .submitbutton {
+    font-size: 10px;
+    word-wrap: break-word;
+  }
+  .material-icons {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .submitbutton {
+    font-size: 6px;
+    word-wrap: break-word;
+  }
+
+}
+.card-action.submit{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-image: url('https://s-media-cache-ak0.pinimg.com/originals/f1/c7/5c/f1c75c5ee3b4eefb58bc97db1d573476.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }

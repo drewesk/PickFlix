@@ -16,7 +16,6 @@ function callHomeLoad(){
     let getURL = createRequestURL(query);
     //remove previous results
     $('.media-container').remove();
-    console.log('reqeusting');
     callAPIwithURL(getURL).then(callAPIwithIDs);
   }); //end on submit
 }
@@ -61,6 +60,7 @@ function callAPIwithIDs(response){
 //Element handling
 function createInitialCards(results) {
   setLoading(false);
+  offset_id = '';
   $('.btn').removeAttr('disabled');
   let img, title, mediaID;
   let length = results.length;
@@ -69,16 +69,31 @@ function createInitialCards(results) {
   if(results.length>6){
     length = 6;
     showMore = true;
-  } // end if statement
+  } else if (length==1){
+    offset_id = 'first';
+  } else if (length==2){
+     offset_id = 'second';
+  }
+
   for (var i = 0; i <length; i++) {
+    let offset = 0;
+    if(i==0 && offset_id == 'first'){
+      offset = 4;
+    }
+    if(i==0 && offset_id == 'second'){
+      offset = 1;
+    }
+    if(i==1 && offset_id == 'second'){
+      offset = 2;
+    }
     title = results[i].title;
     mediaID = results[i].id;
     if(mediaType==='show'){
       img = results[i].artwork_304x171;
-      generateCard(img, title, mediaID);
+      generateCard(img, title, mediaID, offset);
     } else {
       img = results[i].poster_240x342;
-      generateCard(img, title, mediaID);
+      generateCard(img, title, mediaID, offset);
       }
   } //end for loop
   $('.main-page-cards').on('click', function(){
@@ -87,18 +102,16 @@ function createInitialCards(results) {
 }
 
 
-function generateCard(imageURL, showTitle, mediaID) {
+function generateCard(imageURL, showTitle, mediaID, offset) {
+  console.log('col s6 m4 offset-' + offset);
   let cardTemplate = `
-    <div class="col s6 m4">
+    <div class="col s6 m4 offset-m${offset}">
       <div class="card card-home main-page-cards hoverable" id="${mediaID}">
         <div class="card-image">
           <img src="${imageURL}">
         </div>
         <div class="card-content">
           <p>${showTitle}</p>
-        </div>
-        <div class="card-action">
-          <a href="#">Watch Now</a>
         </div>
       </div>
     </div>
