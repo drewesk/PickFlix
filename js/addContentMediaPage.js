@@ -1,4 +1,5 @@
 function addDatatoPage(media) {
+  console.log('in');
     addTitle(media);
     addPoster(media);
     addDescription(media);
@@ -76,14 +77,26 @@ function addSources(media){
   let free = media.free_web_sources;
   let subscription = media.subscription_web_sources;
   let purchase = media.purchase_web_sources;
-  for (var i = 0; i < free.length; i++) {
-    findStreamingIcon(free[i].display_name, free[i].link, 'free');
+  if (free.length==0){
+    reportNoSources('free');
+  } else {
+    for (var i = 0; i < free.length; i++) {
+      findStreamingIcon(free[i].display_name, free[i].link, 'free');
+    }
   }
-  for (var ii = 0; ii < subscription.length; ii++) {
-    findStreamingIcon(subscription[ii].display_name, subscription[ii].link, 'subscription');
+  if (subscription.length==0) {
+    reportNoSources('subscription');
+  } else {
+    for (var ii = 0; ii < subscription.length; ii++) {
+      findStreamingIcon(subscription[ii].display_name, subscription[ii].link, 'subscription');
+    }
   }
-  for (var iii = 0; iii < purchase.length; iii++) {
-    findStreamingIcon(purchase[iii].display_name, purchase[iii].link, 'purchase');
+  if (purchase.length==0) {
+    reportNoSources('purchase');
+  } else {
+    for (var iii = 0; iii < purchase.length; iii++) {
+      findStreamingIcon(purchase[iii].display_name, purchase[iii].link, 'purchase');
+    }
   }
 }
 
@@ -120,4 +133,13 @@ function generateIcon(imgURL, link, sourcetype){
   </div>
   `;
 $('.' + mediaType + '.' + sourcetype + '-container').append(iconTemplate);
+}
+
+function reportNoSources(sourceType){
+  let alert = `
+  <div>
+      <p>We did not find any ${sourceType} sources available at this time.</p>
+  </div>
+  `;
+  $('.' + mediaType + '.' + sourceType + '-container').append(alert);
 }
