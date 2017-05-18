@@ -24,3 +24,7 @@
   background: linear-gradient(black, grey);
   height: 15px;
 }
+
+.submitbutton{
+  width: 25%
+}

@@ -39,9 +39,11 @@ function addDescription(media){
   const cast = media.cast;
   let cast_list = '';
   let extra_class = 'Network';
-  for (var i = 0; i < cast.length-1; i++) {
-    cast_list += cast[i].name + ', ';
-  } cast_list += cast[cast.length-2].name;
+  if(typeof(cast.length) != 'undefined'){
+    for (var i = 0; i < cast.length-1; i++) {
+      cast_list += cast[i].name + ', ';
+    } cast_list += cast[cast.length-2].name;
+  }
   console.log(cast_list);
   if(media.media=='show') {
     extra_class = 'Network';

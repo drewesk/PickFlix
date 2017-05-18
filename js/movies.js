@@ -21,7 +21,7 @@ function storeMovieData(response) {
   movie.year = response.release_year;
   movie.cast = response.cast;
   movie.extra  =response.directors[0].name;
-  show.media = 'movie';
+  movie.media = 'movie';
   addDatatoPage(movie);
   $('.progress').hide()
   $('.app').show();

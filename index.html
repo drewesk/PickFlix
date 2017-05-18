@@ -17,28 +17,37 @@
     <section class="page home-page">
       <!-- Movie/TV button selection-->
       <div class="container">
+        <br><br>
         <div class="row">
-          <div class="col s12">
-            <ul class="tabs toggle">
-              <li class="tab col s3 offset-s3" id= "show"><a class="active" href="#test1">TV Shows</a></li>
-              <li class="tab col s3" id= "movie"><a href="#test2">Movies</a></li>
-            </ul>
-          </div>
-        </div>
-      <!--Search Option-->
-        <div class="row">
-          <form class="col s12 offset-s2" id="mediasubmit">
-            <div class="row">
-              <div class="input-field col s6">
-                <input placeholder="What would you like to watch?" id="media" type="text">
-              </div>
-              <div class = "col s2">
-                <button class="btn waves-effect waves-light" id ="send-button" type="submit" name="action">Submit
-                  <i class="material-icons right">send</i>
-                </button>
-              </div>
+          <div class="col s12 m8 offset-m2">
+            <div class="card">
+              <form id="mediasubmit">
+                <div class="card-content">
+                  Search for your favorite movie or TV show
+                  <div class="input-field">
+                    <input
+                        placeholder="What would you like to watch?" id="media" type="text">
+                  </div>
+                </div>
+                <div class="card-action">
+                  <button
+                      class="btn submitbutton waves-effect waves-light indigo"
+                      type="submit"
+                      name="movie">
+                    <i class="material-icons left">movie</i>
+                    Search Movies
+                  </button>
+                  <button
+                      class="btn submitbutton waves-effect waves-light right green"
+                      type="submit"
+                      name="show">
+                    <i class="material-icons left">stars</i>
+                    Search TV shows
+                  </button>
+                </div>
+              </form>
             </div>
-          </form>
+          </div>
         </div>
         <div class="progress">
           <div class="indeterminate"></div>

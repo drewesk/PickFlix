@@ -2,6 +2,7 @@
 //show home page upon loading
 $(function() {
   showPage('home');
+  callHomeLoad();
 });
 
 //register all other pages

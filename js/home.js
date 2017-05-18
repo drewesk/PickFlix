@@ -2,19 +2,29 @@
 var mediaType = 'show';
 var currentMediaID;
 
+function callHomeLoad(){
+  $('.submitbutton').click(function(){
+    //event.preventDefault();
+    mediaType = $(this).attr("name");
+    console.log(mediaType);
+  })
+  $('#mediasubmit').on('submit', function() {
+    //disable button
+    $('.btn').attr('disabled', 'disabled');
+    setLoading(true);
+    let query = storeUserInput(event);
+    let getURL = createRequestURL(query);
+    //remove previous results
+    $('.media-container').remove();
+    console.log('reqeusting');
+    callAPIwithURL(getURL).then(callAPIwithIDs);
+  }); //end on submit
+}
+
 function home(){
   $(document).ready(function(){
     //on submit, store, request, and eppend information
-    $('#mediasubmit').on('submit', function() {
-      //disable button
-      $('#send-button').attr('disabled', 'disabled');
-      setLoading(true);
-      let query = storeUserInput(event);
-      let getURL = createRequestURL(query);
-      //remove previous results
-      $('.media-container').remove();
-      callAPIwithURL(getURL).then(callAPIwithIDs);
-    }); //end on submit
+
     //on user toggling between media type, reset var
     $('.tab').on('click', function(){
         mediaType = $(this).attr('id');
@@ -51,7 +61,7 @@ function callAPIwithIDs(response){
 //Element handling
 function createInitialCards(results) {
   setLoading(false);
-  $('#send-button').removeAttr('disabled');
+  $('.btn').removeAttr('disabled');
   let img, title, mediaID;
   let length = results.length;
   let showMore = false;
