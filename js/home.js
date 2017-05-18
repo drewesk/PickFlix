@@ -1,13 +1,17 @@
+//Global Variables
 var mediaType = 'show';
 var currentMediaID;
 
 function home(){
-  console.log('home');
   $(document).ready(function(){
     //on submit, store, request, and eppend information
     $('#mediasubmit').on('submit', function() {
+      //disable button
+      $('#send-button').attr('disabled', 'disabled');
+      setLoading(true);
       let query = storeUserInput(event);
       let getURL = createRequestURL(query);
+      //remove previous results
       $('.media-container').remove();
       callAPIwithURL(getURL).then(callAPIwithIDs);
     }); //end on submit
@@ -15,14 +19,16 @@ function home(){
     $('.tab').on('click', function(){
         mediaType = $(this).attr('id');
     }); //end on tab
-    $('body').on('click', 'div.card-home', function(){
-      console.log('clicked me');
-      goToPage(this.id, mediaType);
-      //console.log(this.id);
-    }); //end on card click
   });//end document ready
 }//end home function
 
+function setLoading(isLoading){
+  if(isLoading){
+    $('.progress').show();
+  } else {
+    $('.progress').hide();
+  }
+}
 
 //Data handling/API Requests
 function storeUserInput(event) {
@@ -31,7 +37,6 @@ function storeUserInput(event) {
   let query = 'search?type=' + mediaType + '&field=title&query=' + title + '&';
   return query;
 }
-
 
 function callAPIwithIDs(response){
   let requests = [];
@@ -45,6 +50,8 @@ function callAPIwithIDs(response){
 
 //Element handling
 function createInitialCards(results) {
+  setLoading(false);
+  $('#send-button').removeAttr('disabled');
   let img, title, mediaID;
   let length = results.length;
   let showMore = false;
@@ -52,7 +59,7 @@ function createInitialCards(results) {
   if(results.length>6){
     length = 6;
     showMore = true;
-  } // end if statemend
+  } // end if statement
   for (var i = 0; i <length; i++) {
     title = results[i].title;
     mediaID = results[i].id;
@@ -64,13 +71,16 @@ function createInitialCards(results) {
       generateCard(img, title, mediaID);
       }
   } //end for loop
+  $('.main-page-cards').on('click', function(){
+    goToPage(this.id, mediaType);
+  });
 }
 
 
 function generateCard(imageURL, showTitle, mediaID) {
   let cardTemplate = `
     <div class="col s6 m4">
-      <div class="card card-home hoverable" id="${mediaID}">
+      <div class="card card-home main-page-cards hoverable" id="${mediaID}">
         <div class="card-image">
           <img src="${imageURL}">
         </div>
@@ -83,6 +93,7 @@ function generateCard(imageURL, showTitle, mediaID) {
       </div>
     </div>
     `;
+    //end on card click
     $('.media-container').append(cardTemplate);
 }
 

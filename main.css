@@ -2,6 +2,10 @@
   display: none;
 }
 
+.progress{
+  display: none;
+}
+
 .single-movie-holder{
   padding-top: 2em;
   padding-bottom: 2em;
@@ -14,4 +18,9 @@
   justify-content: space-around;
   align-items: center;
   align-content: space-around;
+}
+
+.divider{
+  background: linear-gradient(black, grey);
+  height: 15px;
 }
