@@ -9,7 +9,7 @@ function addDatatoPage(media) {
 function addTitle(media){
   let title = media.title;
   let titleTemplate = `
-    <div class="col s12s">
+    <div class="col s12s title">
       <h3 class="bold italic">${title}</h3>
     </div>
     `;
