@@ -10,7 +10,7 @@ function addTitle(media){
   let title = media.title;
   let titleTemplate = `
     <div class="col s12s">
-      <h3>${title}</h3>
+      <h3 class="bold italic">${title}</h3>
     </div>
     `;
   $('.' + mediaType + '.title-holder').append(titleTemplate);
@@ -18,8 +18,9 @@ function addTitle(media){
 
 function addPoster(media){
   const imageURL = media.imageURL;
+  console.log(imageURL);
   const imageTemplate = `
-    <div class="col s12 m7 poster-img" >
+    <div class="col s12 m12 l4 poster-img">
       <div class="card">
         <div class="card-image">
           <img class="z-depth-3" src="${imageURL}">
@@ -52,18 +53,18 @@ function addDescription(media){
   }
   let pTemplate = `
     <h3>
-      <span class="about-span">About</span>
+      <span class="about-span"><b>About</b></span>
       ${title}
     </h3>
     <div class="title-synopsis">
     <p>${description}</p>
     </div>
     <div class="title-cast-and-crew">
-      <h5>Cast</h5>
+      <h5><b>Cast</b></h5>
       <p>${cast_list}</p>
-      <h5>Year of Original Release</h5>
+      <h5><b>Year of Original Release</b></h5>
       <p>${year}</p>
-      <h5>${extra_class}</h5>
+      <h5><b>${extra_class}</b></h5>
       <p>${extra}</p>
     </div>
     `;

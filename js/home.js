@@ -60,6 +60,7 @@ function callAPIwithIDs(response){
 //Element handling
 function createInitialCards(results) {
   setLoading(false);
+  $('body').css('background-image', 'url()');
   offset_id = '';
   $('.btn').removeAttr('disabled');
   let img, title, mediaID;

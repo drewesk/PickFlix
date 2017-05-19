@@ -57,12 +57,6 @@
   align-content: space-around;
 }
 
-html, body {
-  height: 100%;
-}
-
-body {
-  background-image: url('https://s-media-cache-ak0.pinimg.com/originals/f1/c7/5c/f1c75c5ee3b4eefb58bc97db1d573476.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+.h3{
+  font-weight: 500;
 }
