@@ -1,6 +1,8 @@
-function addDatatoPage(media) {
-  console.log('in');
-    addTitle(media);
+function addDatatoPage(media) {// declaring a function passing in a movie or tv
+  // show from the accessed response data
+  console.log('in');// within the scope
+    addTitle(media);// calling different functions that access the information
+    // from the initial request object
     addPoster(media);
     addDescription(media);
     addSources(media);
@@ -41,7 +43,7 @@ function addDescription(media){
   const cast = media.cast;
   let cast_list = '';
   let extra_class = 'Network';
-  if(typeof(cast.length) != 'undefined'){
+  if(typeof(cast.length) != 'undefined'){ // checking to see that the data isn't undefined.
     for (var i = 0; i < cast.length-1; i++) {
       cast_list += cast[i].name + ', ';
     } cast_list += cast[cast.length-2].name;
